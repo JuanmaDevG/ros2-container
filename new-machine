@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# This script is to automatically setup the environment
+
+if [ "$(id -u)" != 0 ]; then
+  printf "%s%s" \
+  "This script must be run with privileges (for now), try with sudo or direct root user\n" \
+  "TODO: allow rootless configuration if possible\n"
+  exit
+fi
+
+deps=(wget apt-transport-https ca-certificates curl)
+unwanted_deps=(docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc)
+elems_to_purge=(
+  /var/lib/docker
+  /var/lib/containerd
+  /etc/apt/sources.list.d/docker.sources
+  /etc/apt/keyrings/docker.asc)
+gpg_key_url="https://download.docker.com/linux/ubuntu/gpg"
+gpg_key="/etc/apt/keyrings/docker.asc"
+docker_repo_loc="/etc/apt/sources.list.d/docker.list"
+docker_packages=(docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin)
+
+apt update
+
+# Unwanted dependencies to then fetch from repo
+for pkg in ${unwanted_deps[@]}; do
+  apt purge -y $pkg > /dev/null 2> /dev/null
+done
+rm -rf ${elems_to_purge[@]}
+
+apt install -y ${deps[@]}
+install -m 0755 -d /etc/apt/keyrings
+curl -fsSL "$gpg_key_url" -o "$gpg_key"
+chmod a+r "$gpg_key"
+
+printf \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc]
+  https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  tee $docker_repo_loc > /dev/null
+
+apt update
+apt install ${docker_packages[@]}
+
+docker build --build-arg USERNAME=$(whoami)-docker --build-arg USER_UID=$(id -u) -t ros_humble:latest .
+chmod u+x run.sh connect_ros.sh
+
+printf "SETUP: process done, use run.sh to initialize server or connect_ros.sh to connect new terminals"
