@@ -1,0 +1,4 @@
+[console_scripts]
+client = servicio_suma.add_two_ints_client:main
+server = servicio_suma.add_two_ints_server:main
+
