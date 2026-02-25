@@ -1,0 +1,21 @@
+=======================================
+==== Services to run and shutdown =====
+=======================================
+
+- docker
+- containerd
+
+
+==============================
+==== Commands and helpers ====
+==============================
+
+# Inside src dir
+----------------
+ros2 pkg create --build-type ament_cmake --license Apache-2.0 <package_name> --dependencies rclcpp
+ros2 pkg create --build-type ament_python --license Apache-2.0 <package_name> --dependencies rclpy std_msgs
+
+# Compile the package and update (go to workspace dir)
+------------------------------------------------------
+colcon build --packages-select <package_name>
+source install/local_setup.bash
