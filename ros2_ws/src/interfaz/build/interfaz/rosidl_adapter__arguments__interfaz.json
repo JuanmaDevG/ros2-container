@@ -1,0 +1,8 @@
+{
+  "package_name": "interfaz",
+  "non_idl_tuples": [
+    "/workspace/ros2_ws/src/interfaz:msg/MiMensaje.msg",
+    "/workspace/ros2_ws/src/interfaz:msg/P2pkgMensaje.msg",
+    "/workspace/ros2_ws/src/interfaz:action/Fibonacci.action"
+  ]
+}

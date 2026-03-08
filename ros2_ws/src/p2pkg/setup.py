@@ -24,6 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            "pub = p2pkg.nodopub_ejercicio2:main",
+            "sub = p2pkg.nodosub_ejercicio2:main"
         ],
     },
 )

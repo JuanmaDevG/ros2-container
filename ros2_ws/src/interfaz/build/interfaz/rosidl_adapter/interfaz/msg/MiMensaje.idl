@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from interfaz/msg/MiMensaje.msg
+// generated code does not contain a copyright notice
+
+
+module interfaz {
+  module msg {
+    module MiMensaje_Constants {
+      const string NOMBRE = "JuanManuel";
+    };
+    struct MiMensaje {
+      int32 x;
+
+      int32 y;
+    };
+  };
+};

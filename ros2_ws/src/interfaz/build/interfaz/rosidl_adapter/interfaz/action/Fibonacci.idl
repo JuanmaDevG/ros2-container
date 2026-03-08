@@ -1,0 +1,18 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from interfaz/action/Fibonacci.action
+// generated code does not contain a copyright notice
+
+
+module interfaz {
+  module action {
+    struct Fibonacci_Goal {
+      int32 orden;
+    };
+    struct Fibonacci_Result {
+      sequence<int32> secuencia_final;
+    };
+    struct Fibonacci_Feedback {
+      sequence<int32> secuencia_actual;
+    };
+  };
+};

@@ -1,0 +1,3 @@
+/workspace/ros2_ws/src/interfaz/build/interfaz/rosidl_adapter/interfaz:msg/MiMensaje.idl
+/workspace/ros2_ws/src/interfaz/build/interfaz/rosidl_adapter/interfaz:msg/P2pkgMensaje.idl
+/workspace/ros2_ws/src/interfaz/build/interfaz/rosidl_adapter/interfaz:action/Fibonacci.idl
