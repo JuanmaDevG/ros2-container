@@ -15,6 +15,9 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/MiMensaje.msg"
   "msg/P2pkgMensaje.msg"
   "action/Fibonacci.action"
+  "action/EjFibonacci.action"
+  "srv/TempConversion.srv"
+  "action/BatteryCharge.action"
   DEPENDENCIES std_msgs geometry_msgs
 )
 

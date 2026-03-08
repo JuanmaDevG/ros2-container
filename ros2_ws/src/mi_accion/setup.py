@@ -26,6 +26,8 @@ setup(
         'console_scripts': [
             "server = mi_accion.fibonacci_action_server:main",
             "client = mi_accion.fibonacci_action_client:main",
+            "fib_server = mi_accion.ejercicios_fibServer:main",
+            "fib_client = mi_accion.ejercicios_fibClient:main",
         ],
     },
 )
